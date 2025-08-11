@@ -20,8 +20,8 @@ const products = [
     title: "Sistema de arresto con su Carcel y mapeo",
     description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.",
     price: "$5 USD",
-    mediaType: "video",
-    mediaSrc: "arrestar.mp4"
+    mediaType: "image",
+    mediaSrc: "https://drive.google.com/file/d/1MJNZUnAiejBCI02yLj6HaXJgkLj3qVY3/view?usp=sharing"
   },
   {
     id: 4,
@@ -36,16 +36,16 @@ const products = [
     title: "Trabajo de cortador de cesped",
     description: "Trabajo.",
     price: "$1 USD",
-    mediaType: "video",
-    mediaSrc: "cesped.mp4"
+    mediaType: "image",
+    mediaSrc: "https://drive.google.com/file/d/1JC2l4JKkEMvGleiUidz5USR_53lRVoaJ/view?usp=sharing"
   },
   {
     id: 6,
     title: "Demo en Video",
     description: "Video mostrando las funciones del script",
     price: "$18 USD",
-    mediaType: "video",
-    mediaSrc: "arrestar.mp4"
+    mediaType: "image",
+    mediaSrc: "https://drive.google.com/file/d/1MJNZUnAiejBCI02yLj6HaXJgkLj3qVY3/view?usp=sharing"
   }
 ];
 
@@ -165,5 +165,6 @@ modal.addEventListener('click', (e) => {
     }
   }
 });
+
 
 
