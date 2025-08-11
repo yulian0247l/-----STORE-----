@@ -28,8 +28,8 @@ const products = [
     title: "Script de laser",
     description: "Funciona para poder utilizar lazer en las armas.",
     price: "$4 USD",
-    mediaType: "video",
-    mediaSrc: "laser.mp4"
+    mediaType: "image",
+    mediaSrc: "https://drive.google.com/file/d/131FqJZlS5sQyAExd-iALtqPH_nUymuhx/view?usp=sharing"
   },
   {
     id: 5,
@@ -165,4 +165,5 @@ modal.addEventListener('click', (e) => {
     }
   }
 });
+
 
