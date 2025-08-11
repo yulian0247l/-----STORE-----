@@ -20,8 +20,8 @@ const products = [
     title: "Sistema de arresto con su Carcel y mapeo",
     description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.",
     price: "$5 USD",
-    mediaType: "video",
-    mediaSrc: "https://drive.google.com/file/d/1mJUOWd0TvNWfNG6U5HUIi0BhjA2MoKOT/preview"
+    mediaType: "image",
+    mediaSrc: "https://drive.google.com/uc?export=view&id=1MJNZUnAiejBCI02yLj6HaXJgkLj3qVY3"
   },
   {
     id: 4,
@@ -165,6 +165,7 @@ modal.addEventListener('click', (e) => {
     }
   }
 });
+
 
 
 
