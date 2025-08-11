@@ -21,31 +21,31 @@ const products = [
     description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.",
     price: "$5 USD",
     mediaType: "image",
-    mediaSrc: "https://drive.google.com/file/d/1MJNZUnAiejBCI02yLj6HaXJgkLj3qVY3/view?usp=sharing"
+    mediaSrc: "https://drive.google.com/uc?export=view&id=1mJUOWd0TvNWfNG6U5HUIi0BhjA2MoKOT"
   },
   {
     id: 4,
     title: "Script de laser",
     description: "Funciona para poder utilizar lazer en las armas.",
     price: "$4 USD",
-    mediaType: "image",
-    mediaSrc: "https://drive.google.com/file/d/131FqJZlS5sQyAExd-iALtqPH_nUymuhx/view?usp=sharing"
+    mediaType: "video",
+    mediaSrc: "https://drive.google.com/uc?export=view&id=1sIrnLXFzxU9NIhKB8DpUY0VU1wVIP46-"
   },
   {
     id: 5,
     title: "Trabajo de cortador de cesped",
     description: "Trabajo.",
     price: "$1 USD",
-    mediaType: "image",
-    mediaSrc: "https://drive.google.com/file/d/1JC2l4JKkEMvGleiUidz5USR_53lRVoaJ/view?usp=sharing"
+    mediaType: "video",
+    mediaSrc: "https://drive.google.com/uc?export=view&id=15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8"
   },
   {
     id: 6,
     title: "Demo en Video",
     description: "Video mostrando las funciones del script",
     price: "$18 USD",
-    mediaType: "image",
-    mediaSrc: "https://drive.google.com/file/d/1MJNZUnAiejBCI02yLj6HaXJgkLj3qVY3/view?usp=sharing"
+    mediaType: "video",
+    mediaSrc: "https://drive.google.com/uc?export=view&id=15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8"
   }
 ];
 
@@ -165,6 +165,7 @@ modal.addEventListener('click', (e) => {
     }
   }
 });
+
 
 
 
