@@ -1,52 +1,11 @@
-const products = [
-  {
-    id: 1,
-    title: "Script de tuning ilegal con acl y spawm",
-    description: "Funciona para poder poner velocidad únicas a los vehículos.",
-    price: "$2 USD",
-    mediaType: "image",
-    mediaSrc: "ilegal.jpg"
-  },
-  {
-    id: 2,
-    title: "Script para revisar la velocidad",
-    description: "Funciona para poder ver si el vehiculo a estado alterado con su respectivo acl de polica.",
-    price: "$2 USD",
-    mediaType: "image",
-    mediaSrc: "revisar.jpg"
-  },
-  {
-    id: 3,
-    title: "Sistema de arresto con su Carcel y mapeo",
-    description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.",
-    price: "$5 USD",
-    mediaType: "image",
-    mediaSrc: "arrestar.jpg"
-  },
-  {
-    id: 4,
-    title: "Script de laser",
-    description: "Funciona para poder utilizar lazer en las armas.",
-    price: "$4 USD",
-    mediaType: "image",
-    mediaSrc: "laser.jpg"
-  },
-  {
-    id: 5,
-    title: "Trabajo de cortador de cesped",
-    description: "Trabajo.",
-    price: "$1 USD",
-    mediaType: "image",
-    mediaSrc: "cesped.jpg"
-  },
-  {
-    id: 6,
-    title: "Demo en Video",
-    description: "foto mostrando las funciones del script",
-    price: "$18 USD",
-    mediaType: "image",
-    mediaSrc: "cesped.jpg"
-  }
+const products = [ 
+  { id: 1, title: "Script de tuning ilegal con acl y spawm", description: "Funciona para poder poner velocidad únicas a los vehículos.", price: "$2 USD", mediaType: "image", mediaSrc: "ilegal.jpg" },
+  { id: 2, title: "Script para revisar la velocidad", description: "Funciona para poder ver si el vehiculo a estado alterado con su respectivo acl de polica.", price: "$2 USD", mediaType: "image", mediaSrc: "revisar.jpg" },
+  { id: 3, title: "Sistema de arresto con su Carcel y mapeo", description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.", price: "$5 USD", mediaType: "image", mediaSrc: "arrestar.jpg" },
+  { id: 4, title: "Script de laser", description: "Funciona para poder utilizar lazer en las armas.", price: "$4 USD", mediaType: "image", mediaSrc: "laser.jpg" },
+  { id: 5, title: "Trabajo de cortador de cesped", description: "Trabajo.", price: "$1 USD", mediaType: "image", mediaSrc: "cesped.jpg" },
+  { id: 6, title: "Demo en Video", description: "Video demo desde Google Drive", price: "$18 USD", mediaType: "video", mediaSrc: "15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8", thumbnail: "cesped.jpg" },
+  { id: 7, title: "Hud personalizado", description: "Hud con comida agua y mas.", price: "$5 USD", mediaType: "image", mediaSrc: "cesped.jpg" }
 ];
 
 const productsGrid = document.getElementById('productsGrid');
@@ -59,66 +18,88 @@ const modalDesc = document.getElementById('modalDesc');
 const modalPrice = document.getElementById('modalPrice');
 const closeBtn = modal.querySelector('.close-btn');
 
+const contactModal = document.getElementById('contactModal');
+const closeContact = contactModal.querySelector('.close-contact');
+
 function createProductCard(p) {
   const card = document.createElement("div");
   card.className = "product-card";
 
+  let mediaHtml = "";
   if (p.mediaType === "video") {
-    card.innerHTML = `
-      <video class="product-video" muted preload="metadata" loop>
-        <source src="${p.mediaSrc}" type="video/mp4" />
-        Tu navegador no soporta video HTML5.
-      </video>
-      <div class="product-title">${p.title}</div>
-      <div class="product-desc">${p.description}</div>
-      <div class="product-price">${p.price}</div>
-    `;
-    card.querySelector('video').addEventListener('click', () => {
-      showModal(p);
-    });
+    if (p.thumbnail) {
+      mediaHtml = `<img class="product-image" src="${p.thumbnail}" alt="${p.title}">`;
+    } else {
+      mediaHtml = `<img class="product-image" src="video-placeholder.png" alt="${p.title}">`;
+    }
   } else {
-    card.innerHTML = `
-      <img class="product-image" src="${p.mediaSrc}" alt="${p.title}" />
-      <div class="product-title">${p.title}</div>
-      <div class="product-desc">${p.description}</div>
-      <div class="product-price">${p.price}</div>
-    `;
-    card.querySelector('img').addEventListener('click', () => {
-      showModal(p);
-    });
+    mediaHtml = `<img class="product-image" src="${p.mediaSrc}" alt="${p.title}" />`;
   }
+
+  card.innerHTML = `
+    ${mediaHtml}
+    <div class="product-title">${p.title}</div>
+    <div class="product-desc">${p.description}</div>
+    <div class="product-price">${p.price}</div>
+    <button class="contact-btn">Contacto & Pago</button>
+  `;
+
+  // Evento: abrir modal cuando se haga click en cualquier parte del card excepto el botón contacto
+  card.addEventListener('click', (e) => {
+    if (!e.target.classList.contains('contact-btn')) {
+      showModal(p);
+    }
+  });
+
+  // Evento botón contacto
+  card.querySelector('.contact-btn').addEventListener('click', () => {
+    contactModal.style.display = "block";
+  });
 
   return card;
 }
 
 function showModal(p) {
+  modal.scrollTop = 0;
   modalTitle.textContent = p.title;
   modalDesc.textContent = p.description;
   modalPrice.textContent = p.price;
 
+  // Limpiar modal de contenido anterior
+  const oldVideo = document.getElementById('modalVideo');
+  if (oldVideo) oldVideo.remove();
+
+  modalImage.style.display = "none";
+
   if (p.mediaType === "video") {
-    modalImage.style.display = "none";
-    if (!modal.querySelector('video')) {
+    const isGoogleDriveID = !p.mediaSrc.endsWith('.mp4') && !p.mediaSrc.includes('/');
+
+    if (isGoogleDriveID) {
+      const iframe = document.createElement('iframe');
+      iframe.id = 'modalVideo';
+      iframe.src = `https://drive.google.com/file/d/${p.mediaSrc}/preview`;
+      iframe.allowFullscreen = true;
+      iframe.allow = "autoplay";
+      iframe.style.width = '100%';
+      iframe.style.height = '360px';
+      iframe.style.borderRadius = '12px';
+      iframe.style.boxShadow = '0 0 20px #00ffffbb';
+
+      modal.querySelector('.modal-content').insertBefore(iframe, modalTitle);
+    } else {
       const video = document.createElement('video');
       video.id = "modalVideo";
       video.controls = true;
       video.autoplay = true;
       video.loop = true;
       video.muted = false;
+      video.src = p.mediaSrc;
       video.style.maxWidth = "100%";
       video.style.borderRadius = "12px";
       video.style.boxShadow = "0 0 20px #00ffffbb";
       modal.querySelector('.modal-content').insertBefore(video, modalTitle);
     }
-    const modalVideo = document.getElementById('modalVideo');
-    modalVideo.src = p.mediaSrc;
-    modalVideo.style.display = "block";
   } else {
-    const modalVideo = document.getElementById('modalVideo');
-    if (modalVideo) {
-      modalVideo.pause();
-      modalVideo.remove();
-    }
     modalImage.src = p.mediaSrc;
     modalImage.alt = p.title;
     modalImage.style.display = "block";
@@ -137,38 +118,25 @@ function displayProducts(filter = "") {
     productsGrid.innerHTML = "<p style='grid-column:1/-1; text-align:center; color:#008888;'>No se encontraron productos</p>";
     return;
   }
-  filtered.forEach(p => {
-    productsGrid.appendChild(createProductCard(p));
-  });
+  filtered.forEach(p => productsGrid.appendChild(createProductCard(p)));
 }
 
 displayProducts();
 
-searchBox.addEventListener('input', (e) => {
-  displayProducts(e.target.value);
-});
+searchBox.addEventListener('input', e => displayProducts(e.target.value));
 
-closeBtn.addEventListener('click', () => {
+closeBtn.addEventListener('click', () => closeModal());
+modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+
+closeContact.addEventListener('click', () => contactModal.style.display = "none");
+contactModal.addEventListener('click', e => { if (e.target === contactModal) contactModal.style.display = "none"; });
+
+function closeModal() {
   modal.style.display = "none";
   const modalVideo = document.getElementById('modalVideo');
-  if (modalVideo) {
-    modalVideo.pause();
+  if (modalVideo && modalVideo.tagName === "VIDEO") modalVideo.pause();
+  if (modalVideo && modalVideo.tagName === "IFRAME") {
+    modalVideo.src = ""; // Para detener video de Google Drive
   }
-});
-
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) {
-    modal.style.display = "none";
-    const modalVideo = document.getElementById('modalVideo');
-    if (modalVideo) {
-      modalVideo.pause();
-    }
-  }
-});
-
-
-
-
-
-
+}
 
