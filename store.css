@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -35,15 +33,10 @@ main {
   outline: none;
   background: #021026;
   color: #0ff;
-  box-shadow:
-    0 0 8px #00ffff88,
-    inset 0 0 6px #00ffff44;
+  box-shadow: 0 0 8px #00ffff88, inset 0 0 6px #00ffff44;
   margin-bottom: 25px;
 }
-
-#searchBox::placeholder {
-  color: #00ffffaa;
-}
+#searchBox::placeholder { color: #00ffffaa; }
 
 .products {
   display: grid;
@@ -52,52 +45,79 @@ main {
 }
 
 .product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   background: #031032;
   border-radius: 12px;
   padding: 15px;
-  box-shadow:
-    0 0 10px #00ffffaa,
-    inset 0 0 8px #004466;
-  transition: box-shadow 0.3s ease;
+  box-shadow: 0 0 10px #00ffffaa, inset 0 0 8px #004466;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, box-shadow;
   cursor: pointer;
+  height: 100%;
+  min-height: 380px;
+  position: relative;
 }
 
 .product-card:hover {
-  box-shadow:
-    0 0 25px #00ffffee,
-    inset 0 0 15px #0066ffcc;
+  transform: translateY(-8px) scale(1.05);
+  box-shadow: 0 0 30px #00ffffee, inset 0 0 20px #00ffffcc;
+  z-index: 10;
 }
 
-.product-image,
-.product-video {
+
+.product-image {
   width: 100%;
   height: 150px;
   border-radius: 10px;
   object-fit: cover;
   border: 2px solid #00ffff;
   box-shadow: 0 0 15px #00ffffbb;
-  cursor: pointer;
+  margin-bottom: 12px;
+  flex-shrink: 0;
 }
 
 .product-title {
-  margin: 12px 0 6px;
   font-size: 1.3rem;
   text-shadow: 0 0 5px #00ffffcc;
+  margin-bottom: 8px;
+  min-height: 48px;
 }
 
 .product-desc {
   font-size: 0.9rem;
   line-height: 1.3;
   color: #00ffffbb;
-  min-height: 50px;
+  flex-grow: 1;
+  margin-bottom: 12px;
+  min-height: 60px;
 }
 
 .product-price {
-  margin-top: 10px;
   font-weight: 700;
   font-size: 1.1rem;
   color: #00ffcc;
   text-shadow: 0 0 8px #00ffccaa;
+  margin-bottom: 12px;
+  flex-shrink: 0;
+}
+
+.contact-btn {
+  background: linear-gradient(90deg, #00f0ff, #0055ff);
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 5px #00ffffcc;
+  padding: 10px;
+  width: 100%;
+  transition: 0.3s;
+  flex-shrink: 0;
+}
+.contact-btn:hover {
+  box-shadow: 0 0 20px #00ffffee;
 }
 
 footer {
@@ -109,10 +129,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .product-image,
-  .product-video {
-    height: 120px;
-  }
+  .product-image, .product-video { height: 120px; }
 }
 
 /* --- Modal styles --- */
@@ -126,11 +143,10 @@ footer {
   backdrop-filter: blur(4px);
   animation: fadeIn 0.3s ease forwards;
 }
-
 .modal-content {
   position: relative;
   max-width: 600px;
-  margin: 2% auto; /* Más arriba */
+  margin: 2% auto;
   background: #021026;
   border-radius: 15px;
   padding: 20px;
@@ -139,16 +155,13 @@ footer {
   animation: slideUp 0.4s ease forwards;
   text-align: center;
 }
-
-.modal-content img,
-.modal-content video {
+.modal-content img, .modal-content video, .modal-content iframe {
   max-width: 100%;
   border-radius: 12px;
   box-shadow: 0 0 20px #00ffffbb;
   margin-bottom: 15px;
 }
-
-.close-btn {
+.close-btn, .close-contact {
   position: absolute;
   top: 12px;
   right: 15px;
@@ -157,17 +170,29 @@ footer {
   cursor: pointer;
   transition: color 0.3s ease;
 }
+.close-btn:hover, .close-contact:hover { color: #00ffffee; }
 
-.close-btn:hover {
-  color: #00ffffee;
+@keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
+@keyframes slideUp { from {transform: translateY(40px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+/* Estilos para contacto */
+.contact-links, .payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
-
-@keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity: 1;}
+.contact-links a, .payment-methods span {
+  padding: 10px;
+  background: #021026;
+  border-radius: 8px;
+  text-align: center;
+  color: #0ff;
+  text-decoration: none;
+  box-shadow: 0 0 8px #00ffff88, inset 0 0 6px #00ffff44;
+  transition: all 0.3s ease;
 }
-
-@keyframes slideUp {
-  from {transform: translateY(40px); opacity: 0;}
-  to {transform: translateY(0); opacity: 1;}
+.contact-links a:hover, .payment-methods span:hover {
+  background: #03254e;
+  box-shadow: 0 0 15px #00ffffcc, inset 0 0 8px #00ffff66;
+  transform: translateY(-2px);
 }
