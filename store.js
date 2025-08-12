@@ -1,11 +1,11 @@
 const products = [ 
   { id: 1, title: "Script de tuning ilegal con acl y spawm", description: "Funciona para poder poner velocidad únicas a los vehículos.", price: "$2 USD", mediaType: "image", mediaSrc: "ilegal.jpg" },
   { id: 2, title: "Script para revisar la velocidad", description: "Funciona para poder ver si el vehiculo a estado alterado con su respectivo acl de polica.", price: "$2 USD", mediaType: "image", mediaSrc: "revisar.jpg" },
-  { id: 3, title: "Sistema de arresto con su Carcel y mapeo", description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.", price: "$5 USD", mediaType: "image", mediaSrc: "arrestar.jpg" },
-  { id: 4, title: "Script de laser", description: "Funciona para poder utilizar lazer en las armas.", price: "$4 USD", mediaType: "image", mediaSrc: "laser.jpg" },
-  { id: 5, title: "Trabajo de cortador de cesped", description: "Trabajo.", price: "$1 USD", mediaType: "image", mediaSrc: "cesped.jpg" },
-  { id: 6, title: "Demo en Video", description: "Video demo desde Google Drive", price: "$18 USD", mediaType: "video", mediaSrc: "15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8", thumbnail: "cesped.jpg" },
-  { id: 7, title: "Hud personalizado", description: "Hud con comida agua y mas.", price: "$5 USD", mediaType: "image", mediaSrc: "cesped.jpg" }
+  { id: 3, title: "Sistema de arresto con su Carcel y mapeo", description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.", price: "$5 USD", mediaType: "video", mediaSrc: "1mJUOWd0TvNWfNG6U5HUIi0BhjA2MoKOT" , thumbnail: "arrestar.jpg" },
+  { id: 4, title: "Script de laser", description: "Funciona para poder utilizar lazer en las armas.", price: "$4 USD", mediaType: "video", mediaSrc: "1sIrnLXFzxU9NIhKB8DpUY0VU1wVIP46-" , thumbnail: "laser.jpg" },
+  { id: 5, title: "Trabajo de cortador de cesped", description: "Trabajo.", price: "$1 USD", mediaType: "video", mediaSrc: "15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8" , thumbnail: "cesped.jpg" },
+  { id: 6, title: "Demo en Video", description: "Video demo desde Google Drive", price: "$18 USD", mediaType: "video", mediaSrc: "15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8", thumbnail: "cesped.jpg" }
+
 ];
 
 const productsGrid = document.getElementById('productsGrid');
@@ -139,4 +139,5 @@ function closeModal() {
     modalVideo.src = ""; // Para detener video de Google Drive
   }
 }
+
 
