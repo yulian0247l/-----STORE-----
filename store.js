@@ -4,8 +4,8 @@ const products = [
   { id: 3, title: "Sistema de arresto con su Carcel y mapeo", description: "Sistema de arrestar con carcel y trabajo para disminuir el tiempo con acl de policia.", price: "$5 USD", mediaType: "video", mediaSrc: "1mJUOWd0TvNWfNG6U5HUIi0BhjA2MoKOT" , thumbnail: "arrestar.jpg" },
   { id: 4, title: "Script de laser", description: "Funciona para poder utilizar lazer en las armas.", price: "$4 USD", mediaType: "video", mediaSrc: "1sIrnLXFzxU9NIhKB8DpUY0VU1wVIP46-" , thumbnail: "laser.jpg" },
   { id: 5, title: "Trabajo de cortador de cesped", description: "Trabajo.", price: "$1 USD", mediaType: "video", mediaSrc: "15gvSvOP_xwBJQgHixlf8z-7cGM7mapj8" , thumbnail: "cesped.jpg" },
-  { id: 6, title: "Letrero Personalizado", description: "Letrero personalizado a su gusto", price: "$2 USD", mediaType: "video", mediaSrc: "1qd80w2yZjGWpFJtWmX2ysB80ku3HU95x", thumbnail: letrero.jpg" }
-  { id: 7, title: "Parqueo", description: "Mapeo de Parqueo bien ampliado con logo", price: "$2 USD", mediaType: "video", mediaSrc: "1HiMUJJ_ugvCbyS0rBjB2sNiKOOBPUZGP", thumbnail: parqueo.jpg" }
+  { id: 6, title: "Letrero Personalizado", description: "Letrero personalizado a su gusto", price: "$2 USD", mediaType: "video", mediaSrc: "1qd80w2yZjGWpFJtWmX2ysB80ku3HU95x", thumbnail: letrero.jpg" },
+  { id: 7, title: "Parqueo", description: "Mapeo de Parqueo bien ampliado con logo", price: "$2 USD", mediaType: "video", mediaSrc: "1HiMUJJ_ugvCbyS0rBjB2sNiKOOBPUZGP", thumbnail: parqueo.jpg" },
 
 ];
 
@@ -140,6 +140,7 @@ function closeModal() {
     modalVideo.src = ""; // Para detener video de Google Drive
   }
 }
+
 
 
 
